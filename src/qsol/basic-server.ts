@@ -1,6 +1,5 @@
-#! /opt/homebrew/bin/node
-const http = require('http');
-const url = require('url');
+import * as http from 'http';
+import * as url from 'url';
 
 const hostname = 'localhost';
 const port = 8000;
@@ -30,11 +29,11 @@ const incidents = [
 
 const server = http.createServer((req, res) => {
     // Parse the request URL to extract parameters
-    const parsedUrl = url.parse(req.url, true);
+    const parsedUrl = url.parse(req.url || '', true);
     const { pathname } = parsedUrl;
-
+    
     // Check if the request is for the specified endpoint
-    if (pathname.startsWith('/incidents/')) {
+    if (pathname && pathname.startsWith('/incidents/')) {
         // Extract parameters from the URL
         const [, , road, location, direction, id] = pathname.split('/');
         // Check if all parameters are provided

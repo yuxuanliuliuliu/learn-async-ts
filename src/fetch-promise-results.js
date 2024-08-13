@@ -11,4 +11,6 @@ fetchPromise.then((response) => {
   });
 });
 
+
+
 console.log('Fetching products ... ');

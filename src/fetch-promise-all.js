@@ -3,7 +3,7 @@ const fetchPromise1 = fetch(
   );
   const fetchPromise2 = fetch(
     "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",
-  );
+  )
   const fetchPromise3 = fetch(
     "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",
   );
@@ -17,4 +17,3 @@ const fetchPromise1 = fetch(
     .catch((error) => {
         console.error(`Failed to fetch: ${error}`);
     });
-  
