@@ -1,42 +1,43 @@
-const aliceTumbling = [
+var aliceTumbling1 = [
     { transform: 'rotate(0) scale(1)' },
     { transform: 'rotate(360deg) scale(0)' }
-  ];
-  
-  const aliceTiming = {
+];
+var aliceTiming1 = {
     duration: 2000,
     iterations: 1,
     fill: 'forwards'
-  }
-  
-  const alice1 = document.querySelector("#alice1");
-  const alice2 = document.querySelector("#alice2");
-  const alice3 = document.querySelector("#alice3");
-
-  alice1
-    .animate(aliceTumbling, aliceTiming)
-    .finished
-    .then((res) => {
-        console.log(res);
-        alice2
-            .animate(aliceTumbling, aliceTiming)
-            .finished
-            .then((res) => {
-                console.log(res);
-                alice3.animate(aliceTumbling, aliceTiming);
-            })
-    });
-
-  // Promise chain  
-  // alice1.animate(aliceTumbling, aliceTiming).finished  
-  //   .then(() => {
-  //       return alice2
-  //               .animate(aliceTumbling, aliceTiming)
-  //               .finished;     
-  //   })
-  //   .then(() => {
-  //     return alice3
-  //             .animate(aliceTumbling, aliceTiming)
-  //             .finished;
-  //   })
-  //   .catch((err) => alert(`Error when promising ... ${err.message}`));
+};
+var alice10 = document.querySelector("#alice1");
+var alice20 = document.querySelector("#alice2");
+var alice30 = document.querySelector("#alice3");
+if (alice10 && alice20 && alice30) {
+    // Promise chain  
+    alice10.animate(aliceTumbling1, aliceTiming1).finished
+        .then(function () {
+        return alice20
+            .animate(aliceTumbling1, aliceTiming1)
+            .finished;
+    })
+        .then(function () {
+        return alice30
+            .animate(aliceTumbling1, aliceTiming1)
+            .finished;
+    })
+        .catch(function (err) { return alert("Error when promising ... ".concat(err.message)); });
+}
+else {
+    console.warn("#alice not found");
+}
+// alice10
+//     .animate(aliceTumbling1, aliceTiming1)
+//     .finished
+//     .then((res) => {
+//         console.log(res);
+//         alice20
+//             .animate(aliceTumbling1, aliceTiming1)
+//             .finished
+//             .then((res) => {
+//                 console.log(res);
+//                 alice30.animate(aliceTumbling1, aliceTiming1);
+//             })
+//     });

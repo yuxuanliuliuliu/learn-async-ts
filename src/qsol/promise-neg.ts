@@ -1,4 +1,4 @@
-function negsPerRow(arr, rowIdx) {
+function negsPerRow(arr: number[][], rowIdx: number): Promise<string> {
     return new Promise((resolve, reject) => {
         if(arr.length > rowIdx ) {
             setTimeout(() => {
@@ -13,16 +13,16 @@ function negsPerRow(arr, rowIdx) {
     });
 }
 
-const array2D = [
+const array2D_2 = [
     [1, 2, 3],
-    [4, 5, 6],
+    [4, 5, -6],
     [7, 8, 9]
 ];
 
-negsPerRowPromises = [];
+const negsPerRowPromises = [];
 
-for(let x = 0; x < array2D.length; x++) {
-    negsPerRowPromises.push(negsPerRow(array2D, x));
+for(let x = 0; x < array2D_2.length; x++) {
+    negsPerRowPromises.push(negsPerRow(array2D_2, x));
 }
 
 Promise.any(negsPerRowPromises)

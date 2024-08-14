@@ -1,4 +1,4 @@
-const array2D = [
+const array2D_1 = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]

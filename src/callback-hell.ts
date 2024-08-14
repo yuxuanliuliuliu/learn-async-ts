@@ -1,14 +1,14 @@
-function doStep1(init, callback) {
+function doStep1(init: number, callback: (result: number) => void) {
     const result = init + 1;
     callback(result);
   }
   
-  function doStep2(init, callback) {
+  function doStep2(init: number, callback: (result: number) => void) {
     const result = init + 2;
     callback(result);
   }
   
-  function doStep3(init, callback) {
+  function doStep3(init: number, callback: (result: number) => void) {
     const result = init + 3;
     callback(result);
   }

@@ -1,4 +1,4 @@
-function sumOfARow(arr, rowIdx) {
+function sumRow(arr: number[][], rowIdx: number): Promise<number> {
     return new Promise((resolve, reject) => {
         if (arr.length > rowIdx) {
             setTimeout(() => {
@@ -14,16 +14,13 @@ function sumOfARow(arr, rowIdx) {
     });
 }
 
-const array2D = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-];
-
-async function calculateSum() {
+async function calculateSum(numArr: number[][]) {
+    if (numArr.length === 0) {
+        throw 'Cannot calculate sum of an empty array';
+    }
     const rowSumPromises = [];
-    for (let x = 0; x < array2D.length; x++) {
-        rowSumPromises.push(sumOfARow(array2D, x));
+    for (let x = 0; x < numArr.length; x++) {
+        rowSumPromises.push(sumRow(numArr, x));
     }
     try {
         const rowSums = await Promise.all(rowSumPromises);
@@ -39,4 +36,10 @@ async function calculateSum() {
     }
 }
 
-calculateSum().then((status) => console.log(status));
+const array2D_4 = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+calculateSum(array2D_4).then((status) => console.log(status));
+calculateSum([]).catch((error) => console.log(error));

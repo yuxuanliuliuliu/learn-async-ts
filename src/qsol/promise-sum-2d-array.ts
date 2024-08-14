@@ -1,4 +1,4 @@
-function sumOfARow(arr, rowIdx) {
+function sumOfARow(arr: number[][], rowIdx: number): Promise<number> {
     return new Promise((resolve, reject) => {
         if(arr.length > rowIdx ) {
             setTimeout(() => {
@@ -16,16 +16,16 @@ function sumOfARow(arr, rowIdx) {
     });
 }
 
-const array2D = [
+const arr2D = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]
 ];
 
-rowSumPromises = [];
+let rowSumPromises = [];
 
-for(let x = 0; x < array2D.length; x++) {
-    rowSumPromises.push(sumOfARow(array2D, x));
+for(let x = 0; x < arr2D.length; x++) {
+    rowSumPromises.push(sumOfARow(arr2D, x));
 }
 
 Promise.all(rowSumPromises)
