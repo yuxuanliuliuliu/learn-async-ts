@@ -1,4 +1,4 @@
-# learn-async-js
+# Asynchronous Typescript Concepts
 
 - Install all depedencies:
 
