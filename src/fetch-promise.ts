@@ -1,10 +1,10 @@
-const fetchPromise = fetch(
+const fetchPromise1 = fetch(
     "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
   );
   
-console.log(fetchPromise);
+console.log(fetchPromise1);
   
-fetchPromise.then((response: Response) => {
+fetchPromise1.then((response: Response) => {
     console.log(`Received response? ${response.ok? 'yes' : 'no'}`);
     console.log(`Response Status: ${response.status}`);
 });

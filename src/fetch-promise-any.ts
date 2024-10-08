@@ -1,16 +1,16 @@
-const url1 = "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json";
-const url2 = "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found";
-const url3 = "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+const url11 = "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json";
+const url21 = "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found";
+const url31 = "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
 
-const fetchPromise1 = fetch(url1);
-const fetchPromise2 = fetch(url2);
-const fetchPromise3 = fetch(url3);
+const fetchPromise11 = fetch(url11);
+const fetchPromise21 = fetch(url21);
+const fetchPromise31 = fetch(url31);
   
-Promise.any([fetchPromise1, fetchPromise2, fetchPromise3])
+Promise.any([fetchPromise11, fetchPromise21, fetchPromise31])
   .then((response: Response) => {
       console.log(`${response.url}: ${response.status}`);
   })
-  .catch((error) => {
+  .catch((error: any) => {
       console.error(`Failed to fetch: ${error}`);
   });
   

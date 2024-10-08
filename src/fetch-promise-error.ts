@@ -5,11 +5,11 @@ interface Product {
     type: string;
   }
 
-const fetchPromise = fetch(
+const fetchPromise3 = fetch(
     "https://mdn.github.io/learningarea/javascript/apis/fetching-data/can-store/products.json",
   );
   
-  fetchPromise
+  fetchPromise3
     .then((response: Response) => {
         if(response.ok) {
             return response.json() as Promise<Product[]>;
