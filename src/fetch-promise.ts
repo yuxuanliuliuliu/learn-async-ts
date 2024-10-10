@@ -10,4 +10,7 @@ fetchPromise1.then((response: Response) => {
 });
   
 console.log("Started request…");
+for (let i = 0; i < 10; i++) {
+  console.log('do other things ...');
+}
   
