@@ -67,7 +67,8 @@ app.get('/incidents/:id', (req: Request, res: Response) => {
   
   if (incident) {
     res.status(200).json(incident);
-  } else {
+  } 
+  else {
     res.status(400).json({ error: 'Incident not found' });
   }
 });
@@ -77,6 +78,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   if (err.status) {
     // OpenAPI validation error
     res.status(err.status).json({
+      errorCode: err.status,
       message: err.message,
       errors: err.errors
     });

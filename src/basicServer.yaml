@@ -46,6 +46,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: ^MA.*
       responses:
         '200':
           description: A specific incident
