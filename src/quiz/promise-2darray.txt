@@ -1,1 +1,4 @@
-Explain the code execution based on the order of the messages logged in src/quiz/promise-2darray.txt.
+- Extract the code in the setTimeout function and replace the setTimeout function  with the extracted code. Then run the main script. 
+- Is there a difference in the flow of execution from when the code was in the setTimeout function?
+- Is the flow of execution in both these examples different from the flow of execution with the examples using the fetch() API, which also returns a promise? 
+- If yes, explain the code execution difference. Add your explanation to this file.
