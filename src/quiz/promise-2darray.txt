@@ -1,4 +1,9 @@
 - Extract the code in the setTimeout function and replace the setTimeout function  with the extracted code. Then run the main script. 
 - Is there a difference in the flow of execution from when the code was in the setTimeout function?
-- Is the flow of execution in both these examples different from the flow of execution with the examples using the fetch() API, which also returns a promise? 
+yes. Without settime out the summation happens immediately after sum is called.
+- Is the flow of execution in both these examples different from the flow of execution with the examples using the fetch() API, which also returns a promise?
+yes.
 - If yes, explain the code execution difference. Add your explanation to this file.
+with settimeout function last line of code get executed regardless of sum or fetch function completed or not.Summation is not
+happen immediately. The result of these two functions is returned after last line of code finished. Without setTimeout, the
+execution is sequential. We can see function get called and then immediately it computes summation and then ends the function.

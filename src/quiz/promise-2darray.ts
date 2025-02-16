@@ -30,6 +30,43 @@ function sum2DArray(arr: number[][]): Promise<number> {
     });
 }
 
+function sum2DArray2(arr: number[][]): Promise<number> {
+    return new Promise((resolve, reject) => {
+        console.log("Sum called ... ");
+
+        if (arr.length === 0) {
+            return reject("Cannot sum an empty array");
+        }
+
+        let rowPromises: Promise<number>[] = [];
+
+        for (let rowIndex = 0; rowIndex < arr.length; rowIndex++) {
+            rowPromises.push(
+                new Promise<number>((resolveRow) => {
+                    setTimeout(() => {
+                        let rowSum = 0;
+                        for (let i = 0; i < arr[rowIndex].length; i++) {
+                            rowSum += arr[rowIndex][i];
+                        }
+                        console.log(`Row ${rowIndex} sum: ${rowSum}`);
+                        resolveRow(rowSum);
+                    }, 0);
+                })
+            );
+        }
+
+        // Execute all row summations concurrently
+        Promise.all(rowPromises)
+            .then((rowSums) => {
+                const totalSum = rowSums.reduce((acc, sum) => acc + sum, 0);
+                resolve(totalSum);
+            })
+            .catch(error => reject(error));
+    });
+}
+
+
+
 // Example usage:
 const array2D = [
     [1, 2, 3],
@@ -37,8 +74,18 @@ const array2D = [
     [7, 8, 9]
 ];
 
-const sumPromise1 = sum2DArray(array2D);
-console.log('sumPromise1:', sumPromise1);
+const sumPromise1 = sum2DArray2(array2D)
+sumPromise1.then(
+    (respone) => {
+        console.log('sumPromise1', respone)
+    }
+)
+.catch((error) => console.error(error));
 
-const sumPromise2 = sum2DArray([]);
-console.log('sumPromise2:', sumPromise2);
+const sumPromise2 = sum2DArray2([]);
+sumPromise2.then(
+    (respone) => {
+        console.log('sumPromise2', respone)
+    }
+)
+.catch((error) => console.error(error));

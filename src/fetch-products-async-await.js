@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,95 +34,61 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var aliceTumbling1 = [
-    { transform: 'rotate(0) scale(1)' },
-    { transform: 'rotate(360deg) scale(0)' }
-];
-var aliceTiming1 = {
-    duration: 2000,
-    iterations: 1,
-    fill: 'forwards'
-};
-var alice10 = document.querySelector("#alice1");
-var alice20 = document.querySelector("#alice2");
-var alice30 = document.querySelector("#alice3");
-// if(alice10 && alice20 && alice30) {
-//   // Promise chain  
-//   alice10.animate(aliceTumbling1, aliceTiming1).finished  
-//     .then(() => {
-//         return alice20
-//                 .animate(aliceTumbling1, aliceTiming1)
-//                 .finished;     
-//     })
-//     .then(() => {
-//       return alice30
-//               .animate(aliceTumbling1, aliceTiming1)
-//               .finished;
-//     })
-//     .catch((err) => alert(`Error when promising ... ${err.message}`));
-// }
-// else{
-//   console.warn("#alice not found");
-// }
-function animateAlice(element) {
+function fetchProducts() {
     return __awaiter(this, void 0, void 0, function () {
+        var response, data, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!element)
-                        throw new Error("alice not found");
-                    return [4 /*yield*/, element.animate(aliceTumbling1, aliceTiming1).finished];
+                    console.log('Begin fetch ... ');
+                    _a.label = 1;
                 case 1:
-                    _a.sent();
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
-function animateAll() {
-    return __awaiter(this, void 0, void 0, function () {
-        var error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 4, , 5]);
-                    if (!alice10 || !alice20 || !alice30) {
-                        console.warn("One or more elements not found");
-                        return [2 /*return*/];
-                    }
-                    console.log("Starting Alice animations...");
-                    return [4 /*yield*/, animateAlice(alice10)];
-                case 1:
-                    _a.sent();
-                    return [4 /*yield*/, animateAlice(alice20)];
+                    _a.trys.push([1, 4, , 5]);
+                    return [4 /*yield*/, fetch("https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json")];
                 case 2:
-                    _a.sent();
-                    return [4 /*yield*/, animateAlice(alice30)];
+                    response = _a.sent();
+                    console.log('Fetch done');
+                    if (!response.ok) {
+                        throw new Error("HTTP error: ".concat(response.status));
+                    }
+                    return [4 /*yield*/, response.json()];
                 case 3:
-                    _a.sent();
-                    console.log("All animations completed!");
-                    return [3 /*break*/, 5];
+                    data = _a.sent();
+                    console.log('response created');
+                    return [2 /*return*/, data[0].name];
                 case 4:
                     error_1 = _a.sent();
-                    console.error("Animation Error:", error_1);
-                    return [3 /*break*/, 5];
+                    throw new Error("Failed to fetch products: ".concat(error_1));
                 case 5: return [2 /*return*/];
             }
         });
     });
 }
-animateAll();
-// alice10
-//     .animate(aliceTumbling1, aliceTiming1)
-//     .finished
-//     .then((res) => {
-//         console.log(res);
-//         alice20
-//             .animate(aliceTumbling1, aliceTiming1)
-//             .finished
-//             .then((res) => {
-//                 console.log(res);
-//                 alice30.animate(aliceTumbling1, aliceTiming1);
-//             })
-//     });
+function main() {
+    return __awaiter(this, void 0, void 0, function () {
+        var productName, err_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log('Begin main ... ');
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, fetchProducts()];
+                case 2:
+                    productName = _a.sent();
+                    console.log(productName);
+                    return [3 /*break*/, 4];
+                case 3:
+                    err_1 = _a.sent();
+                    if (err_1 instanceof Error) {
+                        console.log("Failure: ".concat(err_1.message));
+                    }
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+main();
+console.log('End main thread');
